@@ -92,3 +92,23 @@ rpart_model <- train(area_yield ~ .,                     # Formula for the model
 
 # Print the decision tree model results
 print(rpart_model)
+
+# Train random forest model
+rf_model <- train(area_yield ~ .,                     # Formula for the model
+                  data = crop_data_transformed,       # Dataset
+                  method = "rf",                      # Method (random forests)
+                  trControl = trainControl(method = "cv", number = 10))  # Training control parameters
+
+# Print the random forest model results
+print(rf_model)
+
+# Train GBM model
+gbm_model <- train(area_yield ~ .,                     # Formula for the model
+                   data = crop_data_transformed,       # Dataset
+                   method = "gbm",                    # Method (gradient boosting machines)
+                   trControl = trainControl(method = "cv", number = 10))  # Training control parameters
+
+# Print the GBM model results
+print(gbm_model)
+
+
