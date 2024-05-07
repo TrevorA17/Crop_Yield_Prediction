@@ -206,8 +206,6 @@ bar_item <- ggplot(crop_data, aes(x = Item)) +
 # Combine bar plots into a single plot grid
 barplot_grid <- grid.arrange(bar_area, bar_item, ncol = 2)
 
-# Display the plots
-print(histogram_grid)
-print(barplot_grid)
+
 
 
