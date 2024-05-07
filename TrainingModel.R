@@ -73,7 +73,6 @@ print(model)
 
 # Load required libraries for modeling
 library(caret)
-library(e1071)  # Required for SVM
 
 # Train linear regression model
 lm_model <- train(area_yield ~ .,                     # Formula for the model
@@ -101,5 +100,30 @@ gbm_model <- train(area_yield ~ .,                     # Formula for the model
 
 # Print the GBM model results
 print(gbm_model)
+
+# Load required libraries for modeling
+library(caret)
+
+# Define the training control parameters
+train_control <- trainControl(method = "cv",   # "cv" for k-fold cross-validation
+                              number = 10,     # Number of folds for cross-validation
+                              verboseIter = TRUE)  # Print progress during model training
+
+# Define the models to train
+models <- c("lm", "rpart", "gbm")
+
+# Train the models
+results <- lapply(models, function(model) {
+  train(area_yield ~ .,                     # Formula for the model
+        data = crop_data_transformed,       # Dataset
+        method = model,                     # Method (e.g., linear regression, decision trees, etc.)
+        trControl = train_control)          # Training control parameters
+})
+
+# Compare model performance using resamples
+model_resamples <- resamples(results)
+
+# Summarize model performance
+summary(model_resamples)
 
 
