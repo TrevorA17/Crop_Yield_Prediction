@@ -149,6 +149,65 @@ library(stats)
 anova_result <- aov(area_yield ~ Item, data = crop_data)
 print(summary(anova_result))
 
+# Load required libraries for plotting
+library(ggplot2)
+library(gridExtra)
 
+# Univariate plots for numerical variables
+
+# Histogram for 'area_yield'
+hist_area_yield <- ggplot(crop_data, aes(x = area_yield)) +
+  geom_histogram(binwidth = 1000, fill = "skyblue", color = "black") +
+  labs(title = "Histogram of Area Yield",
+       x = "Area Yield",
+       y = "Frequency")
+
+# Histogram for 'average_rain_fall_mm_per_year'
+hist_rainfall <- ggplot(crop_data, aes(x = average_rain_fall_mm_per_year)) +
+  geom_histogram(binwidth = 50, fill = "lightgreen", color = "black") +
+  labs(title = "Histogram of Average Rainfall",
+       x = "Average Rainfall (mm/year)",
+       y = "Frequency")
+
+# Histogram for 'pesticides_tonnes'
+hist_pesticides <- ggplot(crop_data, aes(x = pesticides_tonnes)) +
+  geom_histogram(binwidth = 10, fill = "lightcoral", color = "black") +
+  labs(title = "Histogram of Pesticides Usage",
+       x = "Pesticides (tonnes)",
+       y = "Frequency")
+
+# Histogram for 'avg_temp'
+hist_temp <- ggplot(crop_data, aes(x = avg_temp)) +
+  geom_histogram(binwidth = 1, fill = "lightyellow", color = "black") +
+  labs(title = "Histogram of Average Temperature",
+       x = "Average Temperature (°C)",
+       y = "Frequency")
+
+# Combine histograms into a single plot grid
+histogram_grid <- grid.arrange(hist_area_yield, hist_rainfall, hist_pesticides, hist_temp, ncol = 2)
+
+# Univariate plots for categorical variables
+
+# Bar plot for 'Area'
+bar_area <- ggplot(crop_data, aes(x = Area)) +
+  geom_bar(fill = "lightblue") +
+  labs(title = "Bar Plot of Areas",
+       x = "Area",
+       y = "Count")
+
+# Bar plot for 'Item'
+bar_item <- ggplot(crop_data, aes(x = Item)) +
+  geom_bar(fill = "lightgreen") +
+  labs(title = "Bar Plot of Items",
+       x = "Item",
+       y = "Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better visibility
+
+# Combine bar plots into a single plot grid
+barplot_grid <- grid.arrange(bar_area, bar_item, ncol = 2)
+
+# Display the plots
+print(histogram_grid)
+print(barplot_grid)
 
 
