@@ -18,3 +18,14 @@ head(crop_data)
 
 # View the dataset in a separate viewer window
 View(crop_data)
+
+# Calculate frequency of each category in 'Area' column
+area_freq <- table(crop_data$Area)
+print(area_freq)
+
+# Calculate frequency of each category in 'Item' column
+item_freq <- table(crop_data$Item)
+print(item_freq)
+
+
+
