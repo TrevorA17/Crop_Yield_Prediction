@@ -27,5 +27,18 @@ print(area_freq)
 item_freq <- table(crop_data$Item)
 print(item_freq)
 
+# Summary statistics for 'area_yield' column
+summary(crop_data$area_yield)
+
+# Summary statistics for 'average_rain_fall_mm_per_year' column
+summary(crop_data$average_rain_fall_mm_per_year)
+
+# Summary statistics for 'pesticides_tonnes' column
+summary(crop_data$pesticides_tonnes)
+
+# Summary statistics for 'avg_temp' column
+summary(crop_data$avg_temp)
+
+
 
 
