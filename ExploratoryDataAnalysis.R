@@ -80,6 +80,56 @@ cat("Mean:", mean_pesticides, "Median:", median_pesticides, "Mode:", mode_pestic
 cat("Mean, Median, and Mode for 'avg_temp' column:\n")
 cat("Mean:", mean_temp, "Median:", median_temp, "Mode:", mode_temp, "\n\n")
 
+# Load required library for skewness and kurtosis calculation
+library(e1071)
+
+# Calculate measures of distribution for numerical variables
+
+# Variance and standard deviation for 'area_yield' column
+var_area_yield <- var(crop_data$area_yield)
+sd_area_yield <- sd(crop_data$area_yield)
+
+# Variance and standard deviation for 'average_rain_fall_mm_per_year' column
+var_rainfall <- var(crop_data$average_rain_fall_mm_per_year)
+sd_rainfall <- sd(crop_data$average_rain_fall_mm_per_year)
+
+# Variance and standard deviation for 'pesticides_tonnes' column
+var_pesticides <- var(crop_data$pesticides_tonnes)
+sd_pesticides <- sd(crop_data$pesticides_tonnes)
+
+# Variance and standard deviation for 'avg_temp' column
+var_temp <- var(crop_data$avg_temp)
+sd_temp <- sd(crop_data$avg_temp)
+
+# Skewness and kurtosis for 'area_yield' column
+skew_area_yield <- skewness(crop_data$area_yield)
+kurt_area_yield <- kurtosis(crop_data$area_yield)
+
+# Skewness and kurtosis for 'average_rain_fall_mm_per_year' column
+skew_rainfall <- skewness(crop_data$average_rain_fall_mm_per_year)
+kurt_rainfall <- kurtosis(crop_data$average_rain_fall_mm_per_year)
+
+# Skewness and kurtosis for 'pesticides_tonnes' column
+skew_pesticides <- skewness(crop_data$pesticides_tonnes)
+kurt_pesticides <- kurtosis(crop_data$pesticides_tonnes)
+
+# Skewness and kurtosis for 'avg_temp' column
+skew_temp <- skewness(crop_data$avg_temp)
+kurt_temp <- kurtosis(crop_data$avg_temp)
+
+# Print results
+cat("Measures of Distribution for 'area_yield' column:\n")
+cat("Variance:", var_area_yield, "Standard Deviation:", sd_area_yield, "Skewness:", skew_area_yield, "Kurtosis:", kurt_area_yield, "\n\n")
+
+cat("Measures of Distribution for 'average_rain_fall_mm_per_year' column:\n")
+cat("Variance:", var_rainfall, "Standard Deviation:", sd_rainfall, "Skewness:", skew_rainfall, "Kurtosis:", kurt_rainfall, "\n\n")
+
+cat("Measures of Distribution for 'pesticides_tonnes' column:\n")
+cat("Variance:", var_pesticides, "Standard Deviation:", sd_pesticides, "Skewness:", skew_pesticides, "Kurtosis:", kurt_pesticides, "\n\n")
+
+cat("Measures of Distribution for 'avg_temp' column:\n")
+cat("Variance:", var_temp, "Standard Deviation:", sd_temp, "Skewness:", skew_temp, "Kurtosis:", kurt_temp, "\n\n")
+
 
 
 
