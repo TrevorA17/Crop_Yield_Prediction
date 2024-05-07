@@ -36,3 +36,59 @@ test_data <- crop_data_transformed[-train_index, ]
 # Check the dimensions of the training and testing sets
 cat("Training data dimensions:", dim(train_data), "\n")
 cat("Testing data dimensions:", dim(test_data), "\n")
+
+# Load required library for bootstrapping
+library(boot)
+
+# Define the function to calculate the statistic of interest (e.g., mean)
+# For example, let's calculate the mean of 'area_yield'
+boot_mean <- function(data, indices) {
+  mean(data[indices, "area_yield"])
+}
+
+# Set the number of bootstrap samples
+num_bootstrap_samples <- 1000
+
+# Perform bootstrapping
+boot_results <- boot(crop_data_transformed, boot_mean, R = num_bootstrap_samples)
+
+# Display the results
+print(boot_results)
+
+# Load required libraries for cross-validation
+library(caret)
+
+# Define the training control parameters
+train_control <- trainControl(method = "cv",   # "cv" for k-fold cross-validation
+                              number = 10)     # Number of folds (e.g., 10-fold cross-validation)
+
+# Define the model training process (e.g., linear regression)
+model <- train(area_yield ~ .,                     # Formula for the model
+               data = crop_data_transformed,       # Dataset
+               method = "lm",                      # Method (e.g., linear regression)
+               trControl = train_control)          # Training control parameters
+
+# Print the cross-validation results
+print(model)
+
+# Load required libraries for modeling
+library(caret)
+library(e1071)  # Required for SVM
+
+# Train linear regression model
+lm_model <- train(area_yield ~ .,                     # Formula for the model
+                  data = crop_data_transformed,       # Dataset
+                  method = "lm",                      # Method (linear regression)
+                  trControl = trainControl(method = "cv", number = 10))  # Training control parameters
+
+# Print the linear regression model results
+print(lm_model)
+
+# Train decision tree model
+rpart_model <- train(area_yield ~ .,                     # Formula for the model
+                     data = crop_data_transformed,       # Dataset
+                     method = "rpart",                   # Method (decision trees)
+                     trControl = trainControl(method = "cv", number = 10))  # Training control parameters
+
+# Print the decision tree model results
+print(rpart_model)
