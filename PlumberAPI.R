@@ -17,7 +17,7 @@ loaded_gbm_model <- readRDS("./models/saved_gbm_model.rds")
 
 #* @get /crop_yield_prediction
 
-predict_crop_yield <- function(Area, Item, Year, area_yield, 
+predict_crop_yield <- function(Area, Item, Year, 
                                average_rain_fall_mm_per_year, pesticides_tonnes, avg_temp,
                                area_yield_log, average_rain_fall_mm_per_year_log, 
                                pesticides_tonnes_log, avg_temp_log) {
@@ -27,7 +27,6 @@ predict_crop_yield <- function(Area, Item, Year, area_yield,
     Area = as.character(Area),
     Item = as.character(Item),
     Year = as.integer(Year),
-    area_yield = as.numeric(area_yield),
     average_rain_fall_mm_per_year = as.numeric(average_rain_fall_mm_per_year),
     pesticides_tonnes = as.numeric(pesticides_tonnes),
     avg_temp = as.numeric(avg_temp),
