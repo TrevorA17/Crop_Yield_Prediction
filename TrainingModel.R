@@ -18,3 +18,21 @@ head(crop_data)
 
 # View the dataset in a separate viewer window
 View(crop_data)
+
+# Load required library for data splitting
+library(caret)
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Define the proportion of data to be used for training (e.g., 80%)
+train_proportion <- 0.8
+
+# Perform data splitting
+train_index <- createDataPartition(crop_data$area_yield, p = train_proportion, list = FALSE)
+train_data <- crop_data[train_index, ]
+test_data <- crop_data[-train_index, ]
+
+# Check the dimensions of the training and testing sets
+cat("Training data dimensions:", dim(train_data), "\n")
+cat("Testing data dimensions:", dim(test_data), "\n")

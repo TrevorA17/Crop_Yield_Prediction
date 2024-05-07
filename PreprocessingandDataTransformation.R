@@ -19,6 +19,13 @@ head(crop_data)
 # View the dataset in a separate viewer window
 View(crop_data)
 
+# Remove the first column from the dataset
+crop_data <- crop_data[, -1]
+
+# Display the first few rows of the modified dataset
+head(crop_data)
+
+
 # Check for missing values in the dataset
 missing_values <- any(is.na(crop_data))
 print(missing_values)
