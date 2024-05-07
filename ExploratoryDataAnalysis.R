@@ -39,6 +39,47 @@ summary(crop_data$pesticides_tonnes)
 # Summary statistics for 'avg_temp' column
 summary(crop_data$avg_temp)
 
+# Define a function to calculate mode
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+# Calculate mean, median, and mode for numerical variables
+
+# Mean, median, and mode for 'area_yield' column
+mean_area_yield <- mean(crop_data$area_yield)
+median_area_yield <- median(crop_data$area_yield)
+mode_area_yield <- Mode(crop_data$area_yield)
+
+# Mean, median, and mode for 'average_rain_fall_mm_per_year' column
+mean_rainfall <- mean(crop_data$average_rain_fall_mm_per_year)
+median_rainfall <- median(crop_data$average_rain_fall_mm_per_year)
+mode_rainfall <- Mode(crop_data$average_rain_fall_mm_per_year)
+
+# Mean, median, and mode for 'pesticides_tonnes' column
+mean_pesticides <- mean(crop_data$pesticides_tonnes)
+median_pesticides <- median(crop_data$pesticides_tonnes)
+mode_pesticides <- Mode(crop_data$pesticides_tonnes)
+
+# Mean, median, and mode for 'avg_temp' column
+mean_temp <- mean(crop_data$avg_temp)
+median_temp <- median(crop_data$avg_temp)
+mode_temp <- Mode(crop_data$avg_temp)
+
+# Print results
+cat("Mean, Median, and Mode for 'area_yield' column:\n")
+cat("Mean:", mean_area_yield, "Median:", median_area_yield, "Mode:", mode_area_yield, "\n\n")
+
+cat("Mean, Median, and Mode for 'average_rain_fall_mm_per_year' column:\n")
+cat("Mean:", mean_rainfall, "Median:", median_rainfall, "Mode:", mode_rainfall, "\n\n")
+
+cat("Mean, Median, and Mode for 'pesticides_tonnes' column:\n")
+cat("Mean:", mean_pesticides, "Median:", median_pesticides, "Mode:", mode_pesticides, "\n\n")
+
+cat("Mean, Median, and Mode for 'avg_temp' column:\n")
+cat("Mean:", mean_temp, "Median:", median_temp, "Mode:", mode_temp, "\n\n")
+
 
 
 
