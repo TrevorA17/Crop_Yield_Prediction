@@ -130,6 +130,18 @@ cat("Variance:", var_pesticides, "Standard Deviation:", sd_pesticides, "Skewness
 cat("Measures of Distribution for 'avg_temp' column:\n")
 cat("Variance:", var_temp, "Standard Deviation:", sd_temp, "Skewness:", skew_temp, "Kurtosis:", kurt_temp, "\n\n")
 
+# Calculate Pearson correlation coefficients between numerical variables
+correlation_matrix <- cor(crop_data[, c("area_yield", "average_rain_fall_mm_per_year", "pesticides_tonnes", "avg_temp")])
+print(correlation_matrix)
+
+# Create contingency table for categorical variables 'Area' and 'Item'
+contingency_table <- table(crop_data$Area, crop_data$Item)
+print(contingency_table)
+
+# Perform chi-square test of independence
+chi_square_test <- chisq.test(contingency_table)
+print(chi_square_test)
+
 
 
 
