@@ -29,9 +29,9 @@ set.seed(123)
 train_proportion <- 0.8
 
 # Perform data splitting
-train_index <- createDataPartition(crop_data$area_yield, p = train_proportion, list = FALSE)
-train_data <- crop_data[train_index, ]
-test_data <- crop_data[-train_index, ]
+train_index <- createDataPartition(crop_data_transformed$area_yield, p = train_proportion, list = FALSE)
+train_data <- crop_data_transformed[train_index, ]
+test_data <- crop_data_transformed[-train_index, ]
 
 # Check the dimensions of the training and testing sets
 cat("Training data dimensions:", dim(train_data), "\n")
