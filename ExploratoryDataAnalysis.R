@@ -142,6 +142,13 @@ print(contingency_table)
 chi_square_test <- chisq.test(contingency_table)
 print(chi_square_test)
 
+# Load required library for ANOVA
+library(stats)
+
+# Perform ANOVA for numerical variable 'area_yield' across different levels of 'Item' (crop type)
+anova_result <- aov(area_yield ~ Item, data = crop_data)
+print(summary(anova_result))
+
 
 
 
